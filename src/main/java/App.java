@@ -12,6 +12,8 @@ public class App {
 }
  */
 class App {
+
+
     public static void main(String[] args) {
         Vehicle vehicleA = new Vehicle("vehicleA", "apple");
         Vehicle vehicleB = new Vehicle("vehicleB", "orange");
@@ -20,6 +22,28 @@ class App {
         Car car = new Car("java", "difficult");
         car.speedup(120);
         car.speedup(80);
+        Bus bus = new Bus("Citybus", "OOCL");
+        bus.speedup(80);
+        bus.speedup(90);
+        Driver fantsz = new Driver(vehicleA, "fantsz");
+        fantsz.speedup(50);
+        Driver kate = new Driver(vehicleB, "kate");
+        kate.speedup(600);
+    }
+}
+
+class Bus extends Vehicle{
+    public Bus(String name, String brand) {
+        super(name, brand);
+    }
+    @Override
+    public void speedup (int increase){
+        if (increase < 70){
+            super.speedup(increase);
+        }
+        else{
+            System.out.println("You are too fast for bus");
+        }
     }
 }
 
@@ -29,14 +53,21 @@ class Car extends Vehicle{
         super(name, brand);
     }
 
-    @Override
+}
+
+class Driver{
+
+    private final Vehicle vehicle;
+    private final String name;
+
+
+    public Driver(Vehicle vehicle, String name) {
+        this.vehicle = vehicle;
+        this.name = name;
+    }
+
     public void speedup(int increase){
-        if (increase < 100){
-            super.speedup(increase);
-        }
-        else{
-            System.out.println("Your car is dead hahaha");
-        }
+        vehicle.speedup(increase);
     }
 
 }
@@ -55,5 +86,4 @@ class Vehicle {
     public void speedup(int speed) {
         System.out.println("name: " + this.name + " Brand: " + this.brand + " Speedup: " + speed);
     }
-
 }
