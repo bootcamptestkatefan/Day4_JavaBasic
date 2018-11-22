@@ -17,8 +17,28 @@ class App {
         Vehicle vehicleB = new Vehicle("vehicleB", "orange");
         vehicleA.speedup(30);
         vehicleB.speedup(40);
-
+        Car car = new Car("java", "difficult");
+        car.speedup(120);
+        car.speedup(80);
     }
+}
+
+class Car extends Vehicle{
+
+    public Car(String name, String brand) {
+        super(name, brand);
+    }
+
+    @Override
+    public void speedup(int increase){
+        if (increase < 100){
+            super.speedup(increase);
+        }
+        else{
+            System.out.println("Your car is dead hahaha");
+        }
+    }
+
 }
 
 class Vehicle {
